@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Template Pengumuman FK-UH 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: satu kolom ala catatan kuliah. Alur pengumuman di atas, lalu kartu template berurutan dengan pratinjau gelembung WhatsApp. */
+:root{
+  --paper:#EEF3F1;
+  --surface:#FFFFFF;
+  --ink:#122220;
+  --muted:#566A66;
+  --line:#D3DEDB;
+  --scrub:#0D6A60;
+  --scrub-soft:#D5ECE8;
+  --navy:#2D46A0;
+  --navy-soft:#DDE3F7;
+  --mark:#FFE14D;
+  --bubble:#DFF3D3;
+  --bubble-ink:#14231F;
+  --chat:#E6ECE9;
+  --on-accent:#FFFFFF;
+  --shadow:0 1px 0 rgba(18,34,32,.04),0 10px 26px -14px rgba(18,34,32,.22);
+  --font-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --font-body:"Plus Jakarta Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0D1514;
+    --surface:#151F1D;
+    --ink:#E4EEEB;
+    --muted:#93A6A2;
+    --line:#26332F;
+    --scrub:#4CC4B4;
+    --scrub-soft:#173A35;
+    --navy:#9DB0FF;
+    --navy-soft:#1F2847;
+    --mark:#7D6A0E;
+    --bubble:#1D3B2C;
+    --bubble-ink:#E4EEEB;
+    --chat:#101918;
+    --on-accent:#0D1514;
+    --shadow:0 1px 0 rgba(0,0,0,.3),0 12px 28px -16px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D1514;
+  --surface:#151F1D;
+  --ink:#E4EEEB;
+  --muted:#93A6A2;
+  --line:#26332F;
+  --scrub:#4CC4B4;
+  --scrub-soft:#173A35;
+  --navy:#9DB0FF;
+  --navy-soft:#1F2847;
+  --mark:#7D6A0E;
+  --bubble:#1D3B2C;
+  --bubble-ink:#E4EEEB;
+  --chat:#101918;
+  --on-accent:#0D1514;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 12px 28px -16px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.55;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+/* Header */
+.top{padding-top:32px;padding-bottom:8px}
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--scrub);
+  margin:0;
+}
+h1{
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:clamp(2.2rem,8vw,3.5rem);
+  line-height:1;
+  letter-spacing:-.025em;
+  margin:.3em 0 .35em;
+  text-wrap:balance;
+}
+.hl{
+  background:linear-gradient(100deg,transparent 0 1.5%,var(--mark) 1.5% 98%,transparent 98%) 0 72%/100% 40% no-repeat;
+  padding:0 .06em;
+}
+.lede{margin:0;color:var(--muted);max-width:60ch}
+.stats{
+  display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none;
+  font-family:var(--font-mono);font-size:12.5px;
+}
+.stats li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 10px;color:var(--muted)}
+.stats b{color:var(--ink);font-weight:600}
+
+/* Alur */
+.flow{display:grid;gap:10px;margin:22px 0 6px}
+.flow-row{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 12px 10px}
+.flow-label{
+  display:flex;align-items:center;gap:8px;margin:0 0 8px;
+  font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+}
+.flow-label .dot{width:8px;height:8px;border-radius:50%;background:var(--cat)}
+.flow-steps{display:flex;align-items:stretch;gap:2px}
+.flow-step{
+  flex:1 1 0;min-width:0;
+  display:grid;gap:2px;align-content:start;
+  text-decoration:none;color:var(--ink);
+  background:var(--cat-soft);
+  border-radius:10px;padding:8px 9px;
+}
+.flow-step span{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--cat)}
+.flow-step strong{font-size:.84rem;font-weight:600;line-height:1.25}
+.flow-step small{font-size:.72rem;line-height:1.3;color:var(--muted)}
+.flow-step:hover{outline:1px solid var(--cat)}
+.flow-arrow{align-self:center;flex:none;color:var(--muted);font-size:13px;padding:0 1px}
+[data-cat="tentiran"]{--cat:var(--scrub);--cat-soft:var(--scrub-soft)}
+[data-cat="soal"]{--cat:var(--navy);--cat-soft:var(--navy-soft)}
+
+/* Toolbar */
+.toolbar{
+  position:sticky;top:0;z-index:5;
+  background:var(--paper);
+  background:color-mix(in srgb,var(--paper) 90%,transparent);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  padding:10px 0;
+}
+.toolbar .wrap{display:grid;gap:8px}
+.search{position:relative}
+.search label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.search input{
+  width:100%;font:inherit;font-size:16px;
+  padding:10px 14px;border-radius:10px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink);
+}
+.search input::placeholder{color:var(--muted)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{
+  font:inherit;font-size:.86rem;font-weight:600;
+  border:1px solid var(--line);background:var(--surface);color:var(--muted);
+  border-radius:999px;padding:6px 12px;cursor:pointer;min-height:36px;
+}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* Kartu */
+.list{display:grid;gap:18px;padding:18px 0 8px}
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-top:4px solid var(--cat);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  scroll-margin-top:120px;
+}
+.card[hidden]{display:none}
+.card-head{display:grid;gap:8px;padding:16px 16px 4px}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-family:var(--font-mono);font-size:12px}
+.code{font-weight:600;color:var(--cat)}
+.pill{border-radius:999px;padding:2px 8px;background:var(--cat-soft);color:var(--cat);font-weight:500}
+.step{color:var(--muted)}
+.edited{border-radius:999px;padding:2px 8px;background:var(--mark);color:var(--ink);font-weight:600}
+.edited[hidden]{display:none}
+h2{
+  font-family:var(--font-display);font-weight:800;
+  font-size:1.5rem;line-height:1.12;letter-spacing:-.012em;
+  margin:0;text-wrap:balance;
+}
+.when{margin:0;font-size:.94rem;color:var(--muted)}
+.when b{color:var(--ink);font-weight:600}
+.swap-wrap{display:grid;gap:6px}
+.swap-label{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.swap{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.swap li{font-size:.8rem;line-height:1.35;border:1px dashed var(--line);border-radius:6px;padding:3px 8px;color:var(--ink)}
+
+.chat{margin:12px 16px 0;padding:14px 14px 14px 20px;border-radius:12px;background:var(--chat)}
+.bubble{
+  position:relative;
+  background:var(--bubble);color:var(--bubble-ink);
+  border-radius:2px 12px 12px 12px;
+  padding:10px 12px 8px;
+  white-space:pre-wrap;overflow-wrap:anywhere;
+  font-size:.92rem;line-height:1.5;
+  box-shadow:0 1px 1px rgba(0,0,0,.1);
+}
+.bubble::before{
+  content:"";position:absolute;left:-8px;top:0;width:8px;height:12px;
+  background:var(--bubble);clip-path:polygon(0 0,100% 0,100% 100%);
+}
+.bubble a{color:var(--scrub);text-decoration:underline;text-underline-offset:2px}
+.bubble .ph{background:var(--mark);color:inherit;border-radius:3px;padding:0 3px}
+.bubble-foot{display:block;text-align:right;font-family:var(--font-mono);font-size:10.5px;color:var(--muted);margin-top:6px}
+
+.editor{display:grid;gap:6px;padding:14px 16px 0}
+.editor[hidden]{display:none}
+.editor label{font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.editor textarea{
+  width:100%;min-height:280px;resize:vertical;
+  font-family:var(--font-mono);font-size:.84rem;line-height:1.55;
+  padding:12px;border-radius:10px;border:1px solid var(--line);
+  background:var(--paper);color:var(--ink);
+}
+.editor small{color:var(--muted);font-size:.8rem}
+
+.actions{display:flex;flex-wrap:wrap;gap:8px;padding:14px 16px 16px}
+.btn{
+  font:inherit;font-size:.95rem;font-weight:600;
+  min-height:44px;padding:10px 16px;border-radius:10px;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  cursor:pointer;
+}
+.btn:hover{border-color:var(--cat)}
+.btn.primary{flex:1 1 170px;background:var(--cat);border-color:var(--cat);color:var(--on-accent)}
+.btn.primary.done{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.btn[hidden]{display:none}
+
+.empty{text-align:center;color:var(--muted);padding:32px 16px;border:1px dashed var(--line);border-radius:16px}
+.empty[hidden]{display:none}
+
+/* Panduan format */
+.guide{margin:26px 0 0;padding:18px 16px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.guide h3{font-family:var(--font-display);font-weight:800;font-size:1.15rem;margin:0 0 4px}
+.guide p{margin:0 0 12px;color:var(--muted);font-size:.92rem}
+.fmt{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.fmt li{display:grid;gap:2px;border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.fmt code{font-family:var(--font-mono);font-size:.85rem;color:var(--muted)}
+.fmt span{font-size:.95rem}
+
+footer{padding-top:24px;padding-bottom:40px;color:var(--muted);font-size:.85rem;font-family:var(--font-mono)}
+
+.toast{
+  position:fixed;left:50%;bottom:20px;z-index:20;
+  transform:translate(-50%,16px);opacity:0;pointer-events:none;
+  max-width:calc(100% - 32px);text-align:center;
+  background:var(--ink);color:var(--paper);
+  padding:10px 18px;border-radius:999px;font-weight:600;font-size:.92rem;
+  transition:opacity .2s ease,transform .2s ease;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--mark);outline-offset:2px}
+
+@media (prefers-reduced-motion: reduce){
+  .toast{transition:none}
+  html{scroll-behavior:auto}
+}
+@media (prefers-reduced-motion: no-preference){
+  html{scroll-behavior:smooth}
+}
+</style>
+</head>
+<body>
+
+<header class="top wrap">
+  <p class="eyebrow">Team Akademik · FK-UH Angkatan 2026</p>
+  <h1>Bank Template <span class="hl">Pengumuman</span></h1>
+  <p class="lede">Pilih template, sesuaikan tanggal, link, dan nama, lalu salin ke grup angkatan. Format tebal dan miring otomatis jalan di WhatsApp.</p>
+  <ul class="stats" aria-label="Ringkasan">
+    <li><b id="stat-total">6</b> template</li>
+    <li><b>2</b> alur kegiatan</li>
+    <li>Pratinjau ala WhatsApp</li>
+  </ul>
+
+  <nav class="flow" id="flow" aria-label="Alur pengumuman"></nav>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <div class="search">
+      <label for="q">Cari template</label>
+      <input id="q" type="search" placeholder="Cari: zoom, rekap, evaluasi…" autocomplete="off">
+    </div>
+    <div class="chips" role="group" aria-label="Filter kategori">
+      <button class="chip" type="button" id="chip-all" data-filter="all" aria-pressed="true">Semua</button>
+      <button class="chip" type="button" id="chip-tentiran" data-filter="tentiran" aria-pressed="false">Tentiran</button>
+      <button class="chip" type="button" id="chip-soal" data-filter="soal" aria-pressed="false">Rekap &amp; Bank Soal</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="list" id="list"></div>
+  <p class="empty" id="empty" hidden>Tidak ada template yang cocok. Coba kata lain atau pilih "Semua".</p>
+
+  <section class="guide" aria-labelledby="guide-title">
+    <h3 id="guide-title">Cheat sheet format WhatsApp</h3>
+    <p>Tanda baca ini otomatis berubah jadi format saat dikirim di WhatsApp. Jangan beri spasi tepat setelah tanda pembuka atau sebelum tanda penutup.</p>
+    <ul class="fmt">
+      <li><code>*teks*</code><span><strong>tebal</strong></span></li>
+      <li><code>_teks_</code><span><em>miring</em></span></li>
+      <li><code>~teks~</code><span><s>coret</s></span></li>
+      <li><code>```teks```</code><span style="font-family:var(--font-mono)">monospace</span></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">Disusun untuk Team Akademik FK-UH Angkatan 2026. Bagian yang diberi sorotan kuning wajib diisi sebelum dikirim.</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var TEMPLATES = [
+    {
+      id:"t-01", code:"T-01", cat:"tentiran", step:"Langkah 1 dari 3",
+      title:"Pengumuman Tentiran", short:"Pengumuman",
+      when:"Siang hari H, sebelum link Zoom siap.",
+      swap:["Hari & tanggal","Jam tiap sesi","Nama tutor","Judul materi"],
+      text:
+`💻 *TENTIRAN ONLINE ALERT!* 💻
+
+Haloo warga FK Angkatan 2026! 👋
+Bingung besok ujian dan nggak tau mau mulai dari mana? Tetap tenang, soalnya malam ini kami dari Tim Akademik Angkatan 2026 akan mengadakan tentiran untuk mematangkan persiapan teman-teman semua 🛋️📚
+
+🗓️ *Hari/Tgl: Minggu/15 November 2026*
+
+🗒️ *RUNDOWN ACARA*
+
+🕡 *SESI 1 | 18.30 – 19.30 WITA*
+🎤 Aidan & Samuel
+📖 *Materi 1:* Topografi Umum dan Susunan Saraf Otonom, Medulla Spinalis, dan Nervus Spinalis
+📖 *Materi 2:* Truncus Cerebri dan Nervi Craniales
+
+☕ *BREAK | 19.30 – 20.00 WITA*
+Istirahatkan dulu otaknya, isi tenaga & cemilan 🍜
+
+🕗 *SESI 2 | 20.00 – 21.00 WITA*
+🎤 Gloria
+📖 *Materi 3:* Diencephalon, Cerebrum, dan Cerebellum
+📖 *Materi 4:* Systema Ventriculi, Meninges, dan Cairan Cerebrospinal
+
+🔗 *Link Zoom:*
+Akan dikirimkan sebelum kegiatan dimulai yahh
+
+📌 Biar lancar:
+• Mic di-mute kalau tidak bicara 🔇
+• Siapkan kuota/WiFi yang kuat 📶
+• Siapkan buku untuk mencatat 📒
+• Siapkan kopi agar tidak tertidur ☕
+
+Jangan sampai cuma join terus ketiduran yah teman-teman 😴😆
+
+*TTD*
+*Team Akademik Angkatan 2026*`
+    },
+    {
+      id:"t-02", code:"T-02", cat:"tentiran", step:"Langkah 2 dari 3",
+      title:"Tentiran Segera Dimulai", short:"Link Zoom",
+      when:"15–30 menit sebelum sesi 1 dimulai.",
+      swap:["Jam tiap sesi","Tutor & materi","Link Zoom","Meeting ID & passcode"],
+      text:
+`⏰ *SIAP SIAP BENTAR LAGI TENTIRAN DIMULAI* ⏰
+
+Haloo warga FK Angkatan 2026! 👋
+Udah siap belum? Bentar lagi tentiran persiapan ujian akan dimulai nih, jangan lupa siapkan Laptop/HP, Charger, Cemilan, dan buku catatan kalian
+
+🕡 *SESI 1 | 18.30 – 19.30 WITA*
+🎤 Aidan & Samuel
+📖 *Materi 1:* Topografi Umum dan Susunan Saraf Otonom, Medulla Spinalis, dan Nervus Spinalis
+📖 *Materi 2:* Truncus Cerebri dan Nervi Craniales
+
+☕ *BREAK | 19.30 – 20.00 WITA*
+Istirahatkan dulu otaknya, isi tenaga & cemilan 🍜
+
+🕗 *SESI 2 | 20.00 – 21.00 WITA*
+🎤 Gloria
+📖 *Materi 3:* Diencephalon, Cerebrum, dan Cerebellum
+📖 *Materi 4:* Systema Ventriculi, Meninges, dan Cairan Cerebrospinal
+
+💻 *JOIN ZOOM DI SINI:*
+🔗 https://telkomsel.zoom.us/j/4455834323?pwd=I5l7Wk0wkovHbxGzsJnlaTyjoErdq6.1&omn=94348322272
+🆔 Meeting ID: 445 583 4323
+🔑 Passcode: ONESHOT
+
+📌 Biar lancar:
+• Mic di-mute kalau tidak bicara 🔇
+• Siapkan kuota/WiFi yang kuat 📶
+• Siapkan buku untuk mencatat 📒
+• Siapkan kopi agar tidak tertidur ☕
+
+Sampai bertemu di Zoom warga FK Angkatan 2026 👋👋
+
+*TTD*
+*Team Akademik Angkatan 2026*`
+    },
+    {
+      id:"t-03", code:"T-03", cat:"tentiran", step:"Langkah 3 dari 3",
+      title:"Tentiran Selesai: Evaluasi & Daftar Tutor", short:"Evaluasi & tutor",
+      when:"Begitu sesi terakhir selesai.",
+      swap:["Link evaluasi (jika form baru)","Link pendaftaran tutor"],
+      text:
+`🎉 *TENTIRAN HARI INI TELAH SELESAI!* 🎉
+
+Kami Team Akademik FK Unhas Angkatan 2026 berterima kasih buat semua yang udah ikut sampe akhir, kalian keren! 🙌
+Big thanks juga buat para tutor yang udah sharing ilmunya ✨
+Semoga segala yang telah diajarkan oleh tutor bisa bermanfaat buat kita semua esok harinya yah guyss 🤩🤩
+Tapi kami meminta sedikit waktu dari kalian untuk mengisi link di bawah ini 👇
+
+📝 *Evaluasi*
+Gimana sesi tadi? Seru? Bikin ngantuk? 😆 Kasih kritik & sarannya di sini biar sesi berikutnya makin oke:
+🔗 https://docs.google.com/forms/d/e/1FAIpQLSejGc1Nv-KkShi-I9MgND5LEMEjtwo7vIFeg2dwKFHQPjVmOQ/viewform?usp=header
+
+🙋 *Jadi Tutor Selanjutnya!*
+Ngerasa jago di satu materi? Saatnya bagi-bagi ilmu ke temen-temen 💡
+🔗 https://docs.google.com/forms/d/e/1FAIpQLSfKw74lOZ6Li6u37kLwaOk5l6m6dEiHMJraRKoTgM7vs-3lvA/viewform?usp=header
+
+Isinya nggak lama kok, paling 5 menit udah kelar 👀
+
+*TTD*
+*Team Akademik FK-UH Angkatan 2026*`
+    },
+    {
+      id:"s-01", code:"S-01", cat:"soal", step:"Sebelum ujian",
+      title:"Bank Soal Teori", short:"Bank soal",
+      when:"Beberapa hari sebelum ujian teori.",
+      swap:["Nama mata kuliah","Link Drive"],
+      text:
+`📝 *BANK SOAL TEORI DATANG, GUYS!* 📝
+
+Haloo warga FK-UH Angkatan 2026! 👋
+Ujian teori Fisiologi, Histologi dan Biokimia Sistem Saraf makin dekat nih 👀 Biar makin pede, kami udah kumpulin soal-soal teori dari tahun-tahun sebelumnya buat kalian latihan!
+
+🔗 *Link Drive:*
+https://drive.google.com/drive/folders/1_ZuGGyYbDjGnTppkHPAVcWbu9ccUV6fj
+
+📌 *Tips biar maksimal:*
+• Kerjain dulu tanpa ngintip kunci jawaban 🙈
+• Perhatiin pola soal dari tahun ke tahun, siapa tau ada yang mirip 👀
+• Cross-check sama buku/slide kuliah ya 📖
+
+Jangan cuma di-save terus lupa dibuka yaa 😆 Semangat latihannya, semoga lancar ujiannya! 💪🔥
+
+*TTD*
+*TEAM AKADEMIK FK-UH ANGKATAN 2026*`
+    },
+    {
+      id:"s-02", code:"S-02", cat:"soal", step:"Setelah ujian",
+      title:"Reminder Isi Rekap Soal", short:"Reminder rekap",
+      when:"1–2 hari setelah ujian, selagi soal masih diingat.",
+      swap:["Salam (pagi/sore/malam)","Nama ujian","Link rekap"],
+      text:
+`📝 *REMINDER UNTUK SELURUH WARGA FK-UH ANGKATAN 2026* 📝
+
+Selamat sore warga FK-UH Angkatan 2026 👋
+
+Sekadar mengingatkan bahwasanya kami dari Team Akademik FK Unhas Angkatan 2026 meminta waktunya untuk mengisi Rekap Soal *Ujian Anatomi Sistem Saraf* yang telah dilaksanakan sebelumnya
+
+🔗 *Link Rekap Soal:* [isi link rekap]
+
+Kenapa penting? Rekap ini bakal jadi bank soal buat latihan kita di kemudian hari 📚✨
+Satu soal dari kamu = satu soal lebih siap buat kita semua 🫶
+
+*TTD*
+*Team Akademik FK-UH Angkatan 2026*
+@semua`
+    },
+    {
+      id:"s-03", code:"S-03", cat:"soal", step:"Rekap rampung",
+      title:"Rekap Soal Sudah Jadi", short:"Rekap jadi",
+      when:"Setelah rekapan selesai disusun.",
+      swap:["Nama ujian & blok","Link folder","Jalur folder","Daftar CP"],
+      text:
+`📢 *[PENGUMUMAN: REKAP SOAL UJIAN TEORI TOPIK 1 & UJIAN PRAKTIKUM 1 BIOMEDIK 3]* 📢
+
+Halo teman-teman! 👋
+
+Terima kasih banyak atas partisipasi dan kontribusi aktif teman-teman semua dalam mengingat serta mengumpulkan soal. Berkat kerja sama kita bersama, *Rekapitulasi Soal Ujian Teori Topik 1 & Ujian Praktikum 1 Biomedik 3* sudah kami rampungkan teman-teman!
+
+📌 *Akses File / Link Rekapan:*
+👉 https://drive.google.com/drive/folders/1hW-ZCsjZMHQX5iX5PB4vZBIHJn2VVTEZ
+
+💡 *NOTES & KONTRIBUSI TAMBAHAN:*
+- Tutorial aksesnya:
+1. Akses linknya
+2. Masuk ke akademik
+3. Masuk ke semester 1
+4. Masuk ke BM 3
+5. Last akses rekapan soalnya 🤩
+- Bagi teman-teman yang merasa *ada soal yang belum terdata, ada opsi/jawaban yang perlu didiskusikan kembali, atau ingin menambahkan detail gambar/preparat*, sangat disarankan untuk menyampaikan penambahannya melalui Contact Person (CP).
+- Masukan dari teman-teman sangat berharga agar dokumen rekapan ini semakin lengkap dan presisi untuk bahan pembelajaran kita bersama ke depannya.
+
+📞 *Contact Person (CP):*
+1) Affan (081386041215)
+2) Joyce (085927729622)
+3) Azhar (089503311869)
+4) Naila (085752250876)
+5) Gloria (082271050624)
+
+Terima kasih sekali lagi atas kerja keras dan kekompakan teman-teman semua. Semoga rekap soal ini bermanfaat untuk evaluasi dan persiapan ujian-ujian berikutnya ya!
+
+*TTD*
+*Tim Akademik FK-UH Angkatan 2026*`
+    }
+  ];
+
+  var CAT_LABEL = { tentiran:"Tentiran", soal:"Rekap & Bank Soal" };
+  var KEY = "tplfk26:";
+
+  var store = {
+    get:function(k){ try{ return window.localStorage.getItem(k); }catch(e){ return null; } },
+    set:function(k,v){ try{ window.localStorage.setItem(k,v); }catch(e){} },
+    del:function(k){ try{ window.localStorage.removeItem(k); }catch(e){} }
+  };
+
+  function esc(s){
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  // Render teks berformat WhatsApp menjadi HTML aman.
+  function renderWA(raw){
+    var s = esc(raw);
+    var urls = [];
+    s = s.replace(/https?:\/\/[^\s*<]+/g, function(m){ urls.push(m); return "\u0000" + (urls.length-1) + "\u0000"; });
+    s = s.replace(/\*(?=\S)([^*\n]*?\S)\*/g, "<strong>$1</strong>");
+    s = s.replace(/(^|[\s(>])_(?=\S)([^_\n]*?\S)_(?=$|[\s).,!?<])/gm, "$1<em>$2</em>");
+    s = s.replace(/~(?=\S)([^~\n]*?\S)~/g, "<s>$1</s>");
+    s = s.replace(/\[(isi[^\]\n]*)\]/gi, '<mark class="ph">[$1]</mark>');
+    s = s.replace(/\u0000(\d+)\u0000/g, function(m,i){
+      var u = urls[+i];
+      return '<a href="' + u + '" target="_blank" rel="noopener">' + u + '</a>';
+    });
+    return s;
+  }
+
+  function norm(s){
+    return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+  }
+
+  function currentText(t){
+    var saved = store.get(KEY + t.id);
+    return saved !== null ? saved : t.text;
+  }
+
+  // Alur
+  var flow = document.getElementById("flow");
+  ["tentiran","soal"].forEach(function(cat){
+    var items = TEMPLATES.filter(function(t){ return t.cat === cat; });
+    var row = document.createElement("div");
+    row.className = "flow-row";
+    row.setAttribute("data-cat", cat);
+    var html = '<p class="flow-label"><span class="dot" aria-hidden="true"></span>Alur ' + esc(CAT_LABEL[cat]) + '</p><div class="flow-steps">';
+    items.forEach(function(t, i){
+      if(i > 0) html += '<span class="flow-arrow" aria-hidden="true">→</span>';
+      html += '<a class="flow-step" href="#' + t.id + '"><span>' + esc(t.code) + '</span><strong>' + esc(t.short) + '</strong><small>' + esc(t.step) + '</small></a>';
+    });
+    html += '</div>';
+    row.innerHTML = html;
+    flow.appendChild(row);
+  });
+
+  // Kartu
+  var list = document.getElementById("list");
+  var cards = [];
+
+  TEMPLATES.forEach(function(t){
+    var el = document.createElement("article");
+    el.className = "card";
+    el.id = t.id;
+    el.setAttribute("data-cat", t.cat);
+    el.setAttribute("aria-labelledby", "title-" + t.id);
+
+    var swaps = t.swap.map(function(x){ return "<li>" + esc(x) + "</li>"; }).join("");
+
+    el.innerHTML =
+      '<div class="card-head">' +
+        '<div class="meta">' +
+          '<span class="code">' + esc(t.code) + '</span>' +
+          '<span class="pill">' + esc(CAT_LABEL[t.cat]) + '</span>' +
+          '<span class="step">' + esc(t.step) + '</span>' +
+          '<span class="edited" hidden>Diedit</span>' +
+        '</div>' +
+        '<h2 id="title-' + t.id + '">' + esc(t.title) + '</h2>' +
+        '<p class="when"><b>Kirim:</b> ' + esc(t.when) + '</p>' +
+        '<div class="swap-wrap"><span class="swap-label">Biasanya diganti</span><ul class="swap">' + swaps + '</ul></div>' +
+      '</div>' +
+      '<div class="chat"><div class="bubble" id="preview-' + t.id + '"></div></div>' +
+      '<div class="editor" hidden>' +
+        '<label for="edit-' + t.id + '">Edit teks sebelum disalin</label>' +
+        '<textarea id="edit-' + t.id + '" spellcheck="false"></textarea>' +
+        '<small>Perubahan tersimpan otomatis di browser ini saja.</small>' +
+      '</div>' +
+      '<div class="actions">' +
+        '<button class="btn primary" type="button" id="copy-' + t.id + '">Salin teks</button>' +
+        '<button class="btn" type="button" id="toggle-' + t.id + '" aria-expanded="false" aria-controls="edit-' + t.id + '">Edit dulu</button>' +
+        '<button class="btn" type="button" id="reset-' + t.id + '" hidden>Kembalikan asli</button>' +
+      '</div>';
+
+    list.appendChild(el);
+
+    var preview = el.querySelector(".bubble");
+    var editor = el.querySelector(".editor");
+    var ta = el.querySelector("textarea");
+    var btnCopy = el.querySelector("#copy-" + t.id);
+    var btnToggle = el.querySelector("#toggle-" + t.id);
+    var btnReset = el.querySelector("#reset-" + t.id);
+    var badge = el.querySelector(".edited");
+
+    function paint(){
+      var txt = currentText(t);
+      preview.innerHTML = renderWA(txt) + '<span class="bubble-foot">' + esc(t.code) + ' · siap dikirim</span>';
+      var changed = txt !== t.text;
+      badge.hidden = !changed;
+      btnReset.hidden = !changed;
+    }
+    paint();
+    ta.value = currentText(t);
+
+    btnToggle.addEventListener("click", function(){
+      var open = editor.hidden;
+      editor.hidden = !open;
+      btnToggle.setAttribute("aria-expanded", String(open));
+      btnToggle.textContent = open ? "Tutup editor" : "Edit dulu";
+      if(open){ ta.value = currentText(t); ta.focus(); }
+    });
+
+    ta.addEventListener("input", function(){
+      if(ta.value === t.text){ store.del(KEY + t.id); } else { store.set(KEY + t.id, ta.value); }
+      // simpan juga di memori bila localStorage tidak tersedia
+      t._mem = ta.value;
+      paintFrom(ta.value);
+    });
+
+    function paintFrom(txt){
+      preview.innerHTML = renderWA(txt) + '<span class="bubble-foot">' + esc(t.code) + ' · siap dikirim</span>';
+      var changed = txt !== t.text;
+      badge.hidden = !changed;
+      btnReset.hidden = !changed;
+    }
+
+    btnReset.addEventListener("click", function(){
+      store.del(KEY + t.id);
+      t._mem = undefined;
+      ta.value = t.text;
+      paintFrom(t.text);
+      toast("Template dikembalikan ke versi asli");
+    });
+
+    btnCopy.addEventListener("click", function(){
+      var txt = (t._mem !== undefined) ? t._mem : currentText(t);
+      copyText(txt).then(function(ok){
+        if(ok){
+          btnCopy.textContent = "Tersalin ✓";
+          btnCopy.classList.add("done");
+          toast("Tersalin! Tinggal tempel di grup WhatsApp");
+          setTimeout(function(){ btnCopy.textContent = "Salin teks"; btnCopy.classList.remove("done"); }, 1800);
+        } else {
+          if(editor.hidden){ btnToggle.click(); }
+          ta.focus(); ta.select();
+          toast("Gagal salin otomatis. Teks sudah dipilih, tekan lama lalu pilih Salin.");
+        }
+      });
+    });
+
+    cards.push({ t:t, el:el });
+  });
+
+  function copyText(txt){
+    function fallback(){
+      try{
+        var tmp = document.createElement("textarea");
+        tmp.value = txt;
+        tmp.setAttribute("readonly","");
+        tmp.style.position = "fixed";
+        tmp.style.top = "0";
+        tmp.style.opacity = "0";
+        document.body.appendChild(tmp);
+        tmp.select();
+        tmp.setSelectionRange(0, txt.length);
+        var ok = document.execCommand("copy");
+        document.body.removeChild(tmp);
+        return ok;
+      }catch(e){ return false; }
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(txt).then(function(){ return true; }, function(){ return fallback(); });
+    }
+    return Promise.resolve(fallback());
+  }
+
+  var toastEl = document.getElementById("toast");
+  var toastTimer;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2400);
+  }
+
+  // Filter & pencarian
+  var q = document.getElementById("q");
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+  var empty = document.getElementById("empty");
+  var statTotal = document.getElementById("stat-total");
+  var activeCat = "all";
+
+  function applyFilter(){
+    var term = norm(q.value.trim());
+    var shown = 0;
+    cards.forEach(function(c){
+      var t = c.t;
+      var txt = (t._mem !== undefined) ? t._mem : currentText(t);
+      var hay = norm(t.title + " " + t.when + " " + t.swap.join(" ") + " " + CAT_LABEL[t.cat] + " " + txt);
+      var ok = (activeCat === "all" || t.cat === activeCat) && (!term || hay.indexOf(term) !== -1);
+      c.el.hidden = !ok;
+      if(ok) shown++;
+    });
+    empty.hidden = shown > 0;
+    statTotal.textContent = String(shown);
+  }
+
+  q.addEventListener("input", applyFilter);
+  chips.forEach(function(ch){
+    ch.addEventListener("click", function(){
+      activeCat = ch.getAttribute("data-filter");
+      chips.forEach(function(o){ o.setAttribute("aria-pressed", String(o === ch)); });
+      applyFilter();
+    });
+  });
+
+  // Lompat ke template dari hash (#t-01 dst.)
+  function jump(){
+    var id = (location.hash || "").slice(1);
+    if(!id) return;
+    var target = document.getElementById(id);
+    if(target && target.classList.contains("card")){
+      if(target.hidden){
+        activeCat = "all"; q.value = "";
+        chips.forEach(function(o){ o.setAttribute("aria-pressed", String(o.getAttribute("data-filter") === "all")); });
+        applyFilter();
+      }
+      target.scrollIntoView();
+    }
+  }
+  window.addEventListener("hashchange", jump);
+  jump();
+})();
+</script>
+</body>
+</html>
